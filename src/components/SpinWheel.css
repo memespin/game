@@ -1,0 +1,87 @@
+:root {
+  --static-image-scale: 0.3;
+  --static-image-hover-scale: 0.35;
+  --static-image-touch-scale: 0.33;
+}
+
+.spin-wheel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.base-image, .static-image, .wheel-image, .drag-zone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.base-image, .static-image {
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.base-image.active, .static-image.active {
+  opacity: 1;
+}
+
+.static-image {
+  transform: scale(var(--static-image-scale));
+}
+
+.spin-wheel-container.hovering .static-image.active,
+.spin-wheel-container.touching .static-image.active {
+  transform: scale(var(--static-image-hover-scale));
+}
+
+.spin-wheel-container.touching .static-image.active {
+  transition: transform 0.1s ease;
+}
+
+.wheel-image {
+  z-index: 3;
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+}
+
+.drag-zone {
+  z-index: 4;
+  cursor: grab;
+}
+
+.drag-zone:active {
+  cursor: grabbing;
+}
+
+.base-image { z-index: 1; }
+.static-image { z-index: 2; }
+
+.spin-wheel-container.spinning .base-image,
+.spin-wheel-container.spinning .static-image,
+.spin-wheel-container.spinning .wheel-image {
+  transition: none;
+}
+
+.spin-wheel-container.spinning .drag-zone {
+  cursor: not-allowed;
+}
+
+.spin-wheel-container.disabled .drag-zone {
+  cursor: not-allowed;
+}
+
+.spin-wheel-container.disabled {
+  opacity: 0.7;
+}

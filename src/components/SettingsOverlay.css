@@ -1,0 +1,263 @@
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  max-height: min(800px, calc(var(--game-current-size) * 0.8));
+  overflow-y: auto;
+}
+
+.settings-title {
+  font-family: var(--header-font-family);
+  font-size: var(--huge-font-size);
+  color: var(--primary-light);
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+  text-shadow: 0 0 10px rgba(115, 46, 255, 0.5);
+}
+
+.settings-section {
+  margin-bottom: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.settings-section-title {
+  font-family: var(--header-font-family);
+  font-size: var(--xlarge-font-size);
+  color: var(--primary-light);
+  text-align: center;
+  text-shadow: 0 0 10px rgba(115, 46, 255, 0.5);
+  margin: 10px;
+}
+
+/* Support Buttons */
+.support-buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.support-buttons .chunky-button {
+  max-width: min(400px, 80%);
+  font-size: var(--xlarge-font-size);
+  background-color: var(--primary-light);
+  margin: 10px;
+}
+
+/* History Section */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: 0;
+  list-style: none;
+  margin-top: 20px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  font-size: var(--base-font-size);
+  margin: 5px;
+}
+
+.history-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.history-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.round-number {
+  color: var(--normal-gray);
+}
+
+.result {
+  font-weight: bold;
+}
+
+.result.win { color: var(--pepe-color-light); }
+.result.draw { color: var(--primary-light); }
+.result.lose { color: var(--elon-color-light); }
+
+.reward-amount {
+  color: var(--primary-light);
+  font-weight: bold;
+}
+
+.unclaimed {
+  color: var(--doge-color-light);
+  font-style: italic;
+}
+
+.no-history {
+  text-align: center;
+  color: var(--normal-gray);
+  margin: var(--space-lg) 0;
+  margin-top: 15px;
+}
+
+/* Footer */
+.settings-footer {
+  text-align: center;
+  color: var(--normal-gray);
+  margin-top: var(--space-xxl);
+}
+
+.attribution {
+  font-size: var(--small-font-size);
+  margin-bottom: var(--space-sm);
+}
+
+.winks-link {
+  color: var(--primary-light);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.copyright {
+  font-size: calc(var(--small-font-size) * 0.9);
+  line-height: 1.4;
+  opacity: 0.7;
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+  .settings-content {
+    padding: var(--space-lg);
+  }
+
+  .history-item {
+    font-size: calc(var(--small-font-size) * 1.1);
+    padding: var(--space-sm);
+  }
+
+  .support-buttons {
+    width: min(50px, 8vh);
+    font-size: var(--large-font-size);
+  }
+
+  .chunky-button {
+    font-size: var(--large-font-size);
+  }
+
+  .copyright {
+    font-size: calc(var(--small-font-size) * 0.7);
+    opacity: 0.5;
+  }
+}
+
+@media (max-height: 600px) {
+  .settings-content {
+    padding: var(--space-md);
+  }
+
+  .settings-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .support-buttons .chunky-button {
+    font-size: calc(var(--large-font-size) * 0.9);
+  }
+
+  .copyright {
+    font-size: calc(var(--small-font-size) * 0.6);
+    opacity: 0.5;
+  }
+}
+
+/* Loading State */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  backdrop-filter: blur(4px);
+}
+
+.overlay-content {
+  position: relative;
+  width: min(90%, 500px);
+  max-height: 85vh;
+  background-color: var(--overlay-background);
+  border: 1px solid var(--overlay-borders);
+  border-radius: calc(var(--border-radius) * 2);
+  overflow: hidden;
+}
+
+/* Scrollbar styling */
+.settings-content::-webkit-scrollbar {
+  width: 16px; 
+  display: block;
+}
+
+.settings-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  margin: 4px;
+}
+
+.settings-content::-webkit-scrollbar-thumb {
+  background: var(--primary-light);  /* Purple by default now */
+  border-radius: 8px;                /* Increased to match wider scrollbar */
+  border: 3px solid transparent;     /* Creates padding effect around thumb */
+  background-clip: padding-box;      /* Ensures border is transparent */
+  min-height: 40px;                 /* Minimum thumb size */
+}
+
+.settings-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);  /* Lighter purple on hover */
+  border: 2px solid transparent;     /* Slightly thinner border on hover */
+}
+
+/* Firefox scrollbar styling */
+.settings-content {
+  scrollbar-width: thick;          /* Use thick scrollbar in Firefox */
+  scrollbar-color: var(--primary-light) rgba(0, 0, 0, 0.3); /* thumb track */
+}
+
+/* For Edge support */
+.settings-content {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* Ensure the content itself has proper padding */
+.settings-content {
+  padding-right: 4px;  /* Prevent content from touching scrollbar */
+  margin-right: 4px;   /* Add some space for the scrollbar */
+}
+
+/* Ensure smooth scrolling */
+.settings-content {
+  scroll-behavior: smooth;
+  overflow-y: scroll;  /* Always show scrollbar */
+}
+
+/* Media query adjustments for smaller screens */
+@media (max-width: 480px) {
+  .settings-content::-webkit-scrollbar {
+    width: 20px;  /* Even wider on mobile for easier touch */
+  }
+  
+  .settings-content::-webkit-scrollbar-thumb {
+    min-height: 60px;  /* Larger minimum thumb size on mobile */
+    border: 4px solid transparent;  /* Larger padding for touch */
+  }
+}
